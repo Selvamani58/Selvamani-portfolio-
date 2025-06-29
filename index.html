@@ -1,0 +1,944 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>NAMBURAJAN. M | Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Fira+Mono&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #1e293b;
+      --accent: #38bdf8;
+      --bg-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      --card-bg: rgba(255,255,255,0.13);
+      --card-border: rgba(255,255,255,0.18);
+      --shadow: 0 8px 32px 0 rgba(31,38,135,0.18);
+      --glass-blur: blur(18px);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: 'Montserrat', Arial, sans-serif;
+      background: var(--bg-gradient);
+      color: #fff;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+    /* Navigation */
+    .nav {
+      position: fixed;
+      top: 30px;
+      right: 30px;
+      z-index: 1000;
+      display: flex;
+      gap: 20px;
+    }
+    .nav-item {
+      width: 50px;
+      height: 50px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.2);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      color: #fff;
+      font-size: 22px;
+    }
+    .nav-item:hover {
+      background: rgba(255,255,255,0.2);
+      transform: scale(1.1);
+    }
+    /* Hero Section */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+    .hero h1 {
+      font-size: clamp(2.5rem, 8vw, 5rem);
+      font-weight: 800;
+      margin-bottom: 1rem;
+      background: linear-gradient(45deg, #fff, #bae6fd);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-shadow: 0 4px 20px rgba(255,255,255,0.3);
+      letter-spacing: 2px;
+      animation: fadeInUp 1s;
+    }
+    .hero .subtitle {
+      font-size: 1.3rem;
+      margin-bottom: 1.5rem;
+      opacity: 0.9;
+      font-weight: 400;
+      color: #e0e7ff;
+      animation: fadeInUp 1.2s;
+    }
+    .hero .hero-description {
+      font-size: 1.1rem;
+      max-width: 600px;
+      margin: 0 auto 2.5rem;
+      opacity: 0.85;
+      line-height: 1.8;
+      animation: fadeInUp 1.4s;
+    }
+    .cta-button {
+      display: inline-block;
+      padding: 15px 40px;
+      background: rgba(255,255,255,0.2);
+      border: 2px solid rgba(255,255,255,0.3);
+      color: white;
+      text-decoration: none;
+      border-radius: 50px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(10px);
+      position: relative;
+      overflow: hidden;
+      font-size: 1.1rem;
+      animation: fadeInUp 1.6s;
+    }
+    .cta-button:hover {
+      background: rgba(255,255,255,0.3);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    }
+    /* Section Titles */
+    .section-title {
+      font-size: clamp(2.2rem, 5vw, 3.5rem);
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 3rem;
+      background: linear-gradient(45deg, #fff, #e0e7ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      letter-spacing: 1px;
+    }
+    /* Cards & Grids */
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 18px;
+    }
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 30px;
+      margin-top: 2rem;
+    }
+    .card {
+      background: var(--card-bg);
+      border-radius: 20px;
+      padding: 32px 28px;
+      border: 1px solid var(--card-border);
+      box-shadow: var(--shadow);
+      backdrop-filter: var(--glass-blur);
+      transition: all 0.3s;
+      position: relative;
+      overflow: hidden;
+      color: #fff;
+      animation: fadeInUp 0.8s;
+    }
+    .card:hover {
+      transform: translateY(-10px) scale(1.02);
+      background: rgba(255,255,255,0.18);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.18);
+    }
+    .card h3 {
+      font-size: 1.4rem;
+      margin-bottom: 1rem;
+      color: #fff;
+      font-weight: 700;
+    }
+    .card p, .card li {
+      opacity: 0.92;
+      margin-bottom: 0.5rem;
+    }
+    .card ul {
+      list-style: none;
+      padding: 0;
+    }
+    .card li {
+      padding: 8px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      transition: all 0.3s;
+    }
+    .card li:hover {
+      padding-left: 10px;
+      color: #38bdf8;
+    }
+    .card li:last-child {
+      border-bottom: none;
+    }
+    /* Contact Section */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      margin-top: 2rem;
+    }
+    .contact-item {
+      text-align: center;
+      padding: 30px;
+      background: var(--card-bg);
+      border-radius: 15px;
+      backdrop-filter: blur(10px);
+      border: 1px solid var(--card-border);
+      transition: all 0.3s;
+      color: #fff;
+    }
+    .contact-item:hover {
+      transform: translateY(-5px);
+      background: rgba(255,255,255,0.18);
+    }
+    .contact-icon {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      display: block;
+    }
+    .hire-button {
+      display: inline-block;
+      margin-top: 3rem;
+      padding: 20px 50px;
+      background: linear-gradient(45deg, #38bdf8, #764ba2);
+      color: white;
+      text-decoration: none;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 1.1rem;
+      transition: all 0.3s;
+      position: relative;
+      overflow: hidden;
+      border: none;
+    }
+    .hire-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+      background: linear-gradient(45deg, #764ba2, #38bdf8);
+    }
+    /* Animations */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(50px);}
+      to { opacity: 1; transform: translateY(0);}
+    }
+    /* Responsive */
+    @media (max-width: 900px) {
+      .container { padding: 0 8px; }
+      .cards-grid { grid-template-columns: 1fr; }
+      .card { padding: 24px 12px; }
+    }
+    @media (max-width: 700px) {
+      .nav { top: 10px; right: 10px; gap: 10px;}
+      .nav-item { width: 40px; height: 40px; font-size: 16px;}
+      .section-title { font-size: 2rem;}
+      .hero h1 { font-size: 2rem;}
+      .card { padding: 18px 8px;}
+    }
+    html { scroll-behavior: smooth; }
+  </style>
+</head>
+
+<body>
+  <!-- Floating Social Buttons Wrapper -->
+  <div class="floating-social-wrapper">
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/919361531764" target="_blank" class="whatsapp-float" title="Chat on WhatsApp" aria-label="WhatsApp">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" style="width:38px; height:38px;">
+    </a>
+    <!-- LinkedIn Floating Button -->
+    <a href="https://www.linkedin.com/in/m-nambu-rajan-a722b1333" target="_blank" class="linkedin-float" title="Connect on LinkedIn" aria-label="LinkedIn">
+      <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/linkedin.svg" alt="LinkedIn" style="width:38px; height:38px; filter:invert(0.2) sepia(1) saturate(5) hue-rotate(180deg);">
+    </a>
+  </div>
+  <style>
+    .floating-social-wrapper {
+      position: fixed;
+      left: 28px;
+      bottom: 38px;
+      z-index: 1200;
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+      align-items: flex-start;
+    }
+    .whatsapp-float,
+    .linkedin-float {
+      background: #fff;
+      border-radius: 50%;
+      box-shadow: 0 6px 24px rgba(30,41,59,0.18);
+      padding: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+    .whatsapp-float {
+      background: #25d366;
+      animation: whatsapp-jump 1.3s infinite;
+    }
+    .whatsapp-float:hover {
+      box-shadow: 0 12px 32px rgba(56,189,248,0.18);
+      transform: scale(1.08);
+    }
+    @keyframes whatsapp-jump {
+      0%, 100% { transform: translateY(0);}
+      20% { transform: translateY(-10px);}
+      40% { transform: translateY(0);}
+      60% { transform: translateY(-6px);}
+      80% { transform: translateY(0);}
+    }
+    .linkedin-float {
+      background: #0077b5;
+      animation: linkedin-jump 1.3s infinite;
+    }
+    .linkedin-float:hover {
+      box-shadow: 0 12px 32px rgba(56,189,248,0.18);
+      transform: scale(1.08);
+    }
+    @keyframes linkedin-jump {
+      0%, 100% { transform: translateY(0);}
+      20% { transform: translateY(-10px);}
+      40% { transform: translateY(0);}
+      60% { transform: translateY(-6px);}
+      80% { transform: translateY(0);}
+    }
+    @media (max-width: 700px) {
+      .floating-social-wrapper {
+        left: 12px;
+        bottom: 16px;
+        gap: 12px;
+      }
+      .whatsapp-float,
+      .linkedin-float {
+        padding: 8px;
+      }
+      .whatsapp-float img,
+      .linkedin-float img {
+        width: 28px !important;
+        height: 28px !important;
+      }
+    }
+  </style>
+  <!-- Navigation -->
+  <nav class="nav" style="position:fixed; top:0; left:0; right:0; width:100vw; height:60px; box-shadow:0 2px 18px rgba(30,41,59,0.10); border:none; border-radius:0 0 18px 18px; display:flex; flex-direction:row; align-items:center; justify-content:flex-end; z-index:1200; padding:0 32px; background:none;">
+    <a href="#home" class="nav-item" title="Home" style="background:none; border:none; border-radius:10px; font-size:1.15rem; font-weight:700; color:#fff; width:auto; height:40px; display:flex; align-items:center; justify-content:center; margin:0 8px; padding:0 14px; box-shadow:none; transition:box-shadow 0.2s, transform 0.2s;">
+      <span style="font-size:1.15rem; margin-right:7px;">🏠</span> Home
+    </a>
+    <a href="#about" class="nav-item" title="About" style="background:none; border:none; border-radius:10px; font-size:1.15rem; font-weight:700; color:#fff; width:auto; height:40px; display:flex; align-items:center; justify-content:center; margin:0 8px; padding:0 14px; box-shadow:none; transition:box-shadow 0.2s, transform 0.2s;">
+      <span style="font-size:1.15rem; margin-right:7px;">👨‍💻</span> About
+    </a>
+    <a href="#projects" class="nav-item" title="Projects" style="background:none; border:none; border-radius:10px; font-size:1.15rem; font-weight:700; color:#fff; width:auto; height:40px; display:flex; align-items:center; justify-content:center; margin:0 8px; padding:0 14px; box-shadow:none; transition:box-shadow 0.2s, transform 0.2s;">
+      <span style="font-size:1.15rem; margin-right:7px;">🚀</span> Projects
+    </a>
+    <a href="#contact" class="nav-item" title="Contact" style="background:none; border:none; border-radius:10px; font-size:1.15rem; font-weight:700; color:#fff; width:auto; height:40px; display:flex; align-items:center; justify-content:center; margin:0 8px; padding:0 14px; box-shadow:none; transition:box-shadow 0.2s, transform 0.2s;">
+      <span style="font-size:1.15rem; margin-right:7px;">📧</span> Contact
+    </a>
+  </nav>
+  <style>
+    @media (max-width: 700px) {
+      .nav {
+        height: 38px !important;
+        padding: 0 4px !important;
+        border-radius: 0 0 10px 10px !important;
+      }
+      .nav .nav-item {
+        font-size: 0.93rem !important;
+        padding: 0 7px !important;
+        margin: 0 2px !important;
+        height: 28px !important;
+        border-radius: 7px !important;
+      }
+      .nav .nav-item span {
+        font-size: 0.93rem !important;
+        margin-right: 3px !important;
+      }
+    }
+    @media (max-width: 480px) {
+      .nav {
+        height: 34px !important;
+        padding: 0 2px !important;
+      }
+      .nav .nav-item {
+        font-size: 0.85rem !important;
+        padding: 0 4px !important;
+        margin: 0 1px !important;
+        height: 24px !important;
+        border-radius: 6px !important;
+      }
+      .nav .nav-item span {
+        font-size: 0.85rem !important;
+        margin-right: 2px !important;
+      }
+    }
+    @media (max-width: 370px) {
+      .nav {
+        flex-wrap: wrap;
+        height: auto !important;
+        padding: 2px 0 !important;
+      }
+      .nav .nav-item {
+        font-size: 0.78rem !important;
+        padding: 0 2px !important;
+        margin: 1px 0 !important;
+        height: 22px !important;
+      }
+    }
+  </style>
+  <style>
+    .nav {
+      backdrop-filter: blur(10px);
+      background: none !important;
+    }
+    .nav .nav-item {
+      position: relative;
+      text-decoration: none;
+      border-radius: 10px;
+      transition: background 0.18s, color 0.18s, transform 0.18s;
+      font-family: 'Montserrat', Arial, sans-serif;
+      letter-spacing: 0.4px;
+    }
+    .nav .nav-item:hover,
+    .nav .nav-item:focus {
+      background: linear-gradient(90deg,#38bdf8 60%,#764ba2 100%);
+      color: #fff !important;
+      transform: translateY(-2px) scale(1.06);
+      box-shadow: 0 6px 24px rgba(56,189,248,0.13);
+    }
+    .nav .nav-item span {
+      transition: transform 0.18s;
+    }
+    .nav .nav-item:hover span,
+    .nav .nav-item:focus span {
+      transform: scale(1.13) rotate(-5deg);
+    }
+    .nav .nav-item::after {
+      content: "";
+      display: block;
+      margin: 0 auto;
+      width: 0%;
+      height: 2px;
+      background: linear-gradient(90deg, #38bdf8 60%, #764ba2 100%);
+      border-radius: 2px;
+      transition: width 0.22s;
+    }
+    .nav .nav-item:hover::after,
+    .nav .nav-item:focus::after {
+      width: 60%;
+    }
+    @media (max-width: 900px) {
+      .nav {
+        height: 48px;
+        padding: 0 4px;
+      }
+      .nav .nav-item {
+        font-size: 1rem !important;
+        padding: 0 8px !important;
+        margin: 0 2px !important;
+        height: 32px !important;
+      }
+      .nav .nav-item span {
+        font-size: 1rem !important;
+        margin-right: 5px !important;
+      }
+    }
+    @media (max-width: 700px) {
+      .nav {
+        height: 38px;
+        padding: 0 1px;
+        justify-content: flex-end;
+      }
+      .nav .nav-item {
+        font-size: 0.93rem !important;
+        padding: 0 4px !important;
+        margin: 0 1px !important;
+        height: 28px !important;
+        border-radius: 7px !important;
+      }
+      .nav .nav-item span {
+        font-size: 0.93rem !important;
+        margin-right: 3px !important;
+      }
+    }
+    body {
+      padding-top: 60px;
+    }
+    @media (max-width: 900px) {
+      body { padding-top: 48px; }
+    }
+    @media (max-width: 700px) {
+      body { padding-top: 38px; }
+    }
+  </style>
+  <style>
+    .nav .nav-item {
+      position: relative;
+      text-decoration: none;
+    }
+    .nav .nav-item:hover,
+    .nav .nav-item:focus {
+      color: #38bdf8 !important;
+    }
+    .nav .nav-item::after {
+      content: "";
+      display: block;
+      margin: 0 auto;
+      width: 0%;
+      height: 2.5px;
+      background: linear-gradient(90deg, #38bdf8 60%, #764ba2 100%);
+      border-radius: 2px;
+      transition: width 0.25s;
+    }
+    .nav .nav-item:hover::after,
+    .nav .nav-item:focus::after {
+      width: 70%;
+    }
+    @media (max-width: 700px) {
+      .nav {
+        padding: 0.3rem 0;
+      }
+      .nav > div {
+        gap: 10px !important;
+      }
+      .nav .nav-item {
+        font-size: 1rem !important;
+        padding: 0 8px !important;
+      }
+    }
+  </style>
+
+  <!-- Hero Section -->
+  <section id="home" class="hero">
+    <h1>NAMBURAJAN. M</h1>
+    <div class="subtitle">
+      Electronics and Communication Engineering Student | IoT | Automation | Embedded Systems | Raspberry Pi Developer | PCB Design | Network Technician | Front-End Web Developer
+    </div>
+    <div class="hero-description">
+      Passionate ECE student specializing in embedded systems, IoT, automation, Raspberry Pi, ARM Cortex M4, PCB design, networking technologies, and front-end web development. I enjoy building solutions that combine hardware and software for real-world applications, with a focus on innovation, collaboration, and problem solving.
+    </div>
+    <a href="#contact" class="cta-button">Let's Connect</a>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="section" style="background: linear-gradient(120deg, #764ba2 0%, #38bdf8 100%); position:relative; z-index:2; padding:0;">
+    <div class="container" style="padding-top: 60px; padding-bottom: 60px;">
+      <h2 class="section-title" style="animation: fadeInDown 1s; margin-bottom: 2.5rem;">About Me</h2>
+      <div class="about-alt" style="display: flex; flex-wrap: wrap; gap: 40px; align-items: stretch; justify-content: center;">
+        <!-- Profile Card -->
+        <div style="flex:1 1 320px; max-width:350px; background:rgba(255,255,255,0.10); border-radius:22px; box-shadow:0 8px 32px rgba(30,41,59,0.13); display:flex; flex-direction:column; align-items:center; padding:36px 24px; margin-bottom:16px; border: 2px solid #fff3;">
+          <div style="width: 120px; height: 120px; border-radius: 50%; overflow: hidden; box-shadow: 0 4px 18px rgba(30,41,59,0.18); margin-bottom: 1.2rem; border: 4px solid #fff; background: #fff;">
+            <img src="1729134844678.jpg" alt="Namburajan M" style="width:100%;height:100%;object-fit:cover;">
+          </div>
+          <h3 style="margin:0 0 0.3rem 0; font-size:1.25rem; font-weight:800; color:#fff; letter-spacing:1px;">Namburajan M</h3>
+          <div style="font-size:1.02rem; color:#e0e7ff; opacity:0.9; text-align:center; margin-bottom:1.1rem;">
+            ECE Student &amp; Embedded/IoT Developer
+          </div>
+          <div style="display: flex; gap: 10px; flex-wrap:wrap; justify-content:center;">
+            <span style="background:#fff2; color:#fff; border-radius:8px; padding:5px 12px; font-size:0.93rem;">IoT</span>
+            <span style="background:#fff2; color:#fff; border-radius:8px; padding:5px 12px; font-size:0.93rem;">Automation</span>
+            <span style="background:#fff2; color:#fff; border-radius:8px; padding:5px 12px; font-size:0.93rem;">Web Dev</span>
+          </div>
+        </div>
+        <!-- Info Card -->
+        <div style="flex:2 1 420px; min-width:320px; background:rgba(30,41,59,0.18); border-radius:18px; padding:36px 32px; box-shadow:0 8px 32px rgba(30,41,59,0.10); display:flex; flex-direction:column; justify-content:center;">
+          <div style="margin-bottom:1.5rem;">
+            <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 0.8rem;">
+              <span style="font-size:1.7rem; color:#38bdf8;">🎓</span>
+              <div>
+                <div style="font-weight:700; color:#38bdf8;">B.E. Electronics &amp; Communication Engineering</div>
+                <div style="font-size:0.98rem; color:#e0e7ff;">Chendhuran College of Engineering and Technology (2022–2026)</div>
+              </div>
+            </div>
+            <div style="font-size:1rem; color:#fff; opacity:0.85;">
+              Specializing in embedded systems, IoT, and automation technologies. I enjoy bridging hardware and software to create innovative solutions.
+            </div>
+          </div>
+          <div style="display: flex; flex-wrap: wrap; gap: 18px;">
+            <div style="flex:1 1 180px; min-width:160px; background:rgba(255,255,255,0.09); border-radius:12px; padding:14px 12px; margin-bottom:8px;">
+              <div style="font-weight:700; color:#a78bfa; margin-bottom:0.4rem;">💡 Technical Skills</div>
+              <ul style="margin:0; padding-left:1.1em; font-size:0.97rem; color:#fff; opacity:0.92;">
+                <li>C, Embedded C, Python, HTML, CSS, JS</li>
+                <li>ARM Cortex M4, Arduino, ESP32, Raspberry Pi</li>
+                <li>PCB Design, MATLAB, IoT Platforms</li>
+                <li>Networking, UI/UX, Figma</li>
+              </ul>
+            </div>
+            <div style="flex:1 1 180px; min-width:160px; background:rgba(255,255,255,0.09); border-radius:12px; padding:14px 12px; margin-bottom:8px;">
+              <div style="font-weight:700; color:#38bdf8; margin-bottom:0.4rem;">📜 Certifications</div>
+              <ul style="margin:0; padding-left:1.1em; font-size:0.97rem; color:#fff; opacity:0.92;">
+                <li>Embedded Systems (ARM Cortex M4)</li>
+                <li>Product Development</li>
+                <li>Reverse Engineering</li>
+                <li>Python </li>
+                <li>Network Technician(cisco)</li>
+                <li>Design Thinking</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <style>
+      @media (max-width: 900px) {
+        #about .about-alt { flex-direction: column !important; gap: 28px !important; }
+        #about .about-alt > div { max-width:100% !important; }
+      }
+      @media (max-width: 700px) {
+        #about .about-alt { gap: 14px !important; }
+        #about .about-alt ul { font-size: 0.92rem !important; }
+        #about .about-alt [style*="padding:14px"] { padding: 8px 4px !important; }
+        #about .about-alt [style*="padding:36px"] { padding: 16px 6px !important; }
+      }
+    </style>
+  </section>
+  <!-- Resume Button Section -->
+  <div style="text-align:center; margin: 48px 0 32px 0;">
+    <a href="resume.pdf" target="_blank" class="cta-button" style="font-size:1.08rem; padding:14px 38px; margin:0 auto; display:inline-block;">
+      <span style="font-size:1.2rem; margin-right:8px;">📄</span> View Resume (PDF)
+    </a>
+  </div>
+  <!-- Projects Section -->
+  <section id="projects" class="section" style="background:rgba(30,41,59,0.9); position:relative; z-index:1;">
+    <div class="container">
+      <h2 class="section-title" style="animation: fadeInDown 1.1s;">Projects</h2>
+      <div class="cards-grid" style="gap:24px;">
+        <div class="card project-card" style="animation: popIn 0.7s;"> <h3>🌱 Smart Irrigation System</h3><p>IoT-based moisture-controlled irrigation</p></div>
+        <div class="card project-card" style="animation: popIn 0.8s;"> <h3>☀️ Solar Tracking System</h3><p>LDR + servo for automated alignment</p></div>
+        <div class="card project-card" style="animation: popIn 0.9s;"> <h3>📡 Radar System</h3><p>Ultrasonic + servo obstacle detection</p></div>
+        <div class="card project-card" style="animation: popIn 1s;"> <h3>🔒 Door Locking System</h3><p>Keypad password + servo</p></div>
+        <div class="card project-card" style="animation: popIn 1.1s;"> <h3>🚁 Rescue Drone (SIH 2024)</h3><p>GPR + thermal + AI disaster detection</p></div>
+        <div class="card project-card" style="animation: popIn 1.2s;"> <h3>🚦 Automated College Checkpost</h3><p>RFID + camera for vehicle entry</p></div>
+        <div class="card project-card" style="animation: popIn 1.3s;"> <h3>🗑️ Smart Dustbin</h3><p>RFID-authorized access</p></div>
+        <div class="card project-card" style="animation: popIn 1.4s;"> <h3>💧 Drinking Water Automation</h3><p>Multi-temp water dispenser with touchscreen</p></div>
+        <div class="card project-card" style="animation: popIn 1.5s;"> <h3>🚰 Water Filtration Automation</h3><p>Quality-based water routing</p></div>
+        <div class="card project-card" style="animation: popIn 1.6s;"> <h3>💡 Automatic Street Light</h3><p>Solar + photocell, 17 posts over 650m</p></div>
+        <div class="card project-card" style="animation: popIn 1.7s;"> <h3>🏠 Raspberry Pi Home Automation</h3><p>App-controlled appliances</p></div>
+        <div class="card project-card" style="animation: popIn 1.8s;"> <h3>🔐 Raspberry Pi Face Recognition Lock</h3><p>AI door lock system</p></div>
+        <div class="card project-card" style="animation: popIn 1.9s;"> <h3>🔊 Li-Fi Based Audio Transmission</h3><p>Wireless audio data transfer using visible light</p></div>
+        <div class="card project-card" style="animation: popIn 2s;"> <h3>🌐 Front-End Website Design</h3><p>Responsive portfolio site, IoT dashboards</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Achievements Section -->
+  <section id="achievements" class="section" style="background: linear-gradient(120deg, #764ba2 10%, #38bdf8 90%);">
+    <div class="container">
+      <h2 class="section-title" style="animation: fadeInDown 1.2s;">Achievements</h2>
+      <div class="cards-grid" style="gap:40px;">
+        <div class="card running-border" style="background:rgba(30,41,59,0.85); color:#fff; animation: fadeInLeft 1.3s;">
+          <h3>🏆 Hackathons</h3>
+          <ul>
+            <li>Cleared TANSAM Hackathon Levels 1, 2, and 3 (IoT & automation innovation)</li>
+            <li>Finalist – Smart India Hackathon 2024 (Rescue Drone project)</li>
+          </ul>
+        </div>
+        <div class="card running-border" style="background:rgba(30,41,59,0.85); color:#fff; animation: fadeInLeft 1.5s;">
+          <h3>🎤 Presentations</h3>
+          <ul>
+            <li>Presented at college and inter-college technical expos & symposiums</li>
+            <li>Proposed affordable PCB design startup concept for educational use</li>
+          </ul>
+        </div>
+        <div class="card running-border" style="background:rgba(30,41,59,0.85); color:#fff; animation: fadeInLeft 1.7s;">
+          <h3>🔬 Publications</h3>
+          <ul>
+            <li>“Li-Fi Based Audio Transmission System” – International Paper Conference, 2025</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  <style>
+    .running-border {
+      position: relative;
+      z-index: 1;
+      overflow: hidden;
+    }
+    .running-border::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: 20px;
+      padding: 2px;
+      background: conic-gradient(
+        #38bdf8 0%,
+        #764ba2 25%,
+        #38bdf8 50%,
+        #764ba2 75%,
+        #38bdf8 100%
+      );
+      -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      pointer-events: none;
+      z-index: 2;
+      animation: border-rotate 2s linear infinite;
+    }
+    @keyframes border-rotate {
+      0% { transform: rotate(0deg);}
+      100% { transform: rotate(360deg);}
+    }
+    .running-border > * {
+      position: relative;
+      z-index: 3;
+    }
+  </style>
+    <!-- Hire Me Form -->
+    <div class="container" style="margin-top: 3rem; max-width: 600px;">
+      <form action="https://api.web3forms.com/submit" method="POST" style="background: rgba(255,255,255,0.15); padding: 28px; border-radius: 18px; backdrop-filter: blur(14px); border: 1px solid rgba(255,255,255,0.25); box-shadow: 0 8px 32px 0 rgba(56,189,248,0.18); animation: fadeInUp 1.8s;">
+        <input type="hidden" name="access_key" value="b35ded91-10db-470e-affc-aada6fdc3ff1">
+
+        <div style="margin-bottom: 1.2rem;">
+          <label for="name" style="display:block; margin-bottom: 0.3rem; color:#222;">Name</label>
+          <input type="text" name="name" id="name" required style="width:100%; padding:12px; border-radius:8px; border:none; outline:none; background:rgba(255,255,255,0.7);">
+        </div>
+
+        <div style="margin-bottom: 1.2rem;">
+          <label for="email" style="display:block; margin-bottom: 0.3rem; color:#222;">Email</label>
+          <input type="email" name="email" id="email" required style="width:100%; padding:12px; border-radius:8px; border:none; outline:none; background:rgba(255,255,255,0.7);">
+        </div>
+
+        <div style="margin-bottom: 1.2rem;">
+          <label for="subject" style="display:block; margin-bottom: 0.3rem; color:#222;">Subject</label>
+          <select name="subject" id="subject" required style="width:100%; padding:12px; border-radius:8px; border:none; outline:none; background:rgba(255,255,255,0.7);">
+            <option value="" disabled selected>Select a subject</option>
+            <option value="Embedded Systems Developer">Embedded Systems Developer</option>
+            <option value="IoT Engineer">IoT Engineer</option>
+            <option value="Automation Specialist">Automation Specialist</option>
+            <option value="PCB Designer">PCB Designer</option>
+            <option value="Network Technician">Network Technician</option>
+            <option value="Front-End Web Developer">Web Developer</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+
+        <div style="margin-bottom: 1.2rem;">
+          <label for="message" style="display:block; margin-bottom: 0.3rem; color:#222;">Message</label>
+          <textarea name="message" id="message" rows="5" required style="width:100%; padding:12px; border-radius:8px; border:none; outline:none; background:rgba(255,255,255,0.7);"></textarea>
+        </div>
+
+        <div style="text-align: center;">
+          <button type="submit" class="hire-button" style="animation: pulse 2s infinite;">Submit Hire Request</button>
+        </div>
+      </form>
+    </div>
+  </section>
+
+    <style>
+      .hireme-form {
+        background: rgba(255,255,255,0.15);
+        padding: 28px;
+        border-radius: 18px;
+        backdrop-filter: blur(14px);
+        border: 1px solid rgba(255,255,255,0.25);
+        box-shadow: 0 8px 32px 0 rgba(56,189,248,0.18);
+        animation: fadeInUp 1.8s;
+        display: flex;
+        flex-direction: column;
+        gap: 1.1rem;
+      }
+      .hireme-form .form-group {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 0.7rem;
+      }
+      .hireme-form label {
+        margin-bottom: 0.35rem;
+        color: #222;
+        font-weight: 600;
+        font-size: 1rem;
+        letter-spacing: 0.2px;
+      }
+      .hireme-form input[type="text"],
+      .hireme-form input[type="email"],
+      .hireme-form textarea {
+        padding: 12px;
+        border-radius: 8px;
+        border: none;
+        outline: none;
+        background: rgba(255,255,255,0.7);
+        font-size: 1rem;
+        margin-bottom: 0.1rem;
+        transition: box-shadow 0.2s;
+      }
+      .hireme-form input[type="file"] {
+        padding: 8px 0;
+        border-radius: 8px;
+        background: rgba(255,255,255,0.7);
+        font-size: 1rem;
+        border: none;
+        outline: none;
+      }
+      .hireme-form input:focus,
+      .hireme-form textarea:focus {
+        box-shadow: 0 0 0 2px #38bdf8;
+      }
+      .modern-btn {
+        background: linear-gradient(45deg, #38bdf8, #764ba2);
+        color: #fff;
+        border: none;
+        border-radius: 50px;
+        padding: 16px 44px;
+        font-size: 1.08rem;
+        font-weight: 700;
+        cursor: pointer;
+        transition: background 0.25s, transform 0.18s;
+        box-shadow: 0 6px 24px rgba(56,189,248,0.13);
+      }
+      .modern-btn:hover,
+      .modern-btn:focus {
+        background: linear-gradient(45deg, #764ba2, #38bdf8);
+        transform: translateY(-2px) scale(1.04);
+      }
+      @media (max-width: 700px) {
+        .hireme-form {
+          padding: 14px 6px;
+          border-radius: 12px;
+        }
+        .modern-btn {
+          padding: 13px 18px;
+          font-size: 1rem;
+        }
+      }
+    </style>
+  </section>
+
+  <style>
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-40px);}
+      to { opacity: 1; transform: translateY(0);}
+    }
+    @keyframes fadeInLeft {
+      from { opacity: 0; transform: translateX(-40px);}
+      to { opacity: 1; transform: translateX(0);}
+    }
+    @keyframes floatCard {
+      0% { opacity: 0; transform: translateY(60px) scale(0.95);}
+      100% { opacity: 1; transform: translateY(0) scale(1);}
+    }
+    @keyframes popIn {
+      0% { opacity: 0; transform: scale(0.8);}
+      100% { opacity: 1; transform: scale(1);}
+    }
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(56,189,248,0.4);}
+      70% { box-shadow: 0 0 0 12px rgba(56,189,248,0);}
+      100% { box-shadow: 0 0 0 0 rgba(56,189,248,0);}
+    }
+    /* Project card hover effect */
+    .project-card {
+      transition: transform 0.3s, box-shadow 0.3s;
+      cursor: pointer;
+    }
+    .project-card:hover {
+      transform: translateY(-8px) scale(1.03) rotate(-1deg);
+      box-shadow: 0 16px 40px rgba(56,189,248,0.18);
+      background: linear-gradient(120deg, #38bdf8 60%, #764ba2 100%);
+    }
+    /* Responsive tweaks for new styles */
+    @media (max-width: 900px) {
+      #about .cards-grid, #achievements .cards-grid { gap: 18px !important; }
+    }
+    @media (max-width: 700px) {
+      #about .cards-grid, #achievements .cards-grid { gap: 10px !important; }
+      #projects .cards-grid { gap: 10px !important; }
+    }
+  </style>
+
+  <!-- Contact Section -->
+  <section id="contact" class="section">
+    <div class="container">
+      <h2 class="section-title">Let's Work Together</h2>
+      <div class="contact-grid">
+        <div class="contact-item">
+          <span class="contact-icon">📧</span>
+          <h3>Email</h3>
+          <p>
+            <a href="mailto:namburajan1105@gmail.com?subject=Hello%20Namburajan" style="color:inherit; text-decoration:underline;"
+               onclick="window.location.href='mailto:namburajan1105@gmail.com?subject=Hello%20Namburajan'; if(navigator.userAgent.match(/Android/i)){ window.location.href='googlegmail://co?to=namburajan1105@gmail.com&subject=Hello%20Namburajan'; return false; }">
+              namburajan1105@gmail.com
+            </a>
+          </p>
+        </div>
+        <div class="contact-item">
+          <span class="contact-icon">📱</span>
+          <h3>Phone</h3>
+          <p>
+            <a href="tel:+919361531764" style="color:inherit; text-decoration:underline;" onclick="window.location.href='tel:+919361531764'; return false;">+91 9361531764</a>
+          </p>
+        </div>
+        <div class="contact-item">
+          <span class="contact-icon">📍</span>
+          <h3>Location</h3>
+          <p>Mettu Street 
+            Kundrakudi
+          </p>
+        </div>
+        <div class="contact-item">
+          <span class="contact-icon">🔗</span>
+          <h3>LinkedIn</h3>
+          <p>
+            <a href="https://www.linkedin.com/in/m-nambu-rajan-a722b1333?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" style="color:inherit; text-decoration:underline;">LinkedIn</a><br>
+      </div>
+      
+  </section>
+  <script>
+   
+    // Smooth scrolling for navigation
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefau 
+      
+        lt();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+    // Typing effect for hero title
+    const heroTitle = document.querySelector('.hero h1');
+    if (heroTitle) {
+      const text = heroTitle.textContent;
+      heroTitle.textContent = '';
+      let i = 0;
+      const typeWriter = () => {
+        if (i < text.length) {
+          heroTitle.textContent += text.charAt(i);
+          i++;
+          setTimeout(typeWriter, 80);
+        }
+      };
+      setTimeout(typeWriter, 600);
+    }
+  </script>
+</body>
+</html>
+<footer style="background:rgba(30,41,59,0.95); color:#e0e7ff; text-align:center; padding:32px 12px 18px 12px; font-size:1rem; letter-spacing:0.5px; margin-top:40px;">
+  <div style="max-width:900px; margin:0 auto;">
+    <div style="margin-bottom:10px;">
+      &copy; 2024 Namburajan M &mdash; Portfolio. All rights reserved.
+    </div>
+    <div style="font-size:0.98rem; opacity:0.8;">
+      Designed &amp; built with <span style="color:#38bdf8;">&#10084;&#65039;</span> | 
+      <a href="https://wa.me/919361531764" target="_blank" style="color:#38bdf8; text-decoration:underline;">WhatsApp</a>
+      &nbsp;|&nbsp;
+      <a href="https://www.linkedin.com/in/m-nambu-rajan-a722b1333" target="_blank" style="color:#38bdf8; text-decoration:underline;">LinkedIn</a>
+    </div>
+  </div>
+</footer>
